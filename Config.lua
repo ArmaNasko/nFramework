@@ -1,0 +1,3 @@
+nFramework = {
+    name = "NLife"
+}
