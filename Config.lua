@@ -1,3 +1,3 @@
-nFramework = {
+Config = {
     name = "NLife"
 }
