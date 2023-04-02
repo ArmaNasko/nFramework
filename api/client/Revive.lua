@@ -1,0 +1,10 @@
+function nFramework.Revive(ped)
+    DoScreenFadeOut(3000)
+    Wait(3000)
+    SetEntityCoordsNoOffset(ped, Config.spawnPosition.x, Config.spawnPosition.y, Config.spawnPosition.z, Config.spawnPosition.heading, false, false, false, true)
+    NetworkResurrectLocalPlayer(Config.spawnPosition.x, Config.spawnPosition.y, Config.spawnPosition.z, Config.spawnPosition.heading, true, false)
+    SetPlayerInvincible(ped, false)
+    SetEntityCoords(PlayerPedId(), Config.spawnPosition.x, Config.spawnPosition.y, Config.spawnPosition.z, Config.spawnPosition.heading)
+    ClearPedBloodDamage(ped)
+    DoScreenFadeIn(3000)
+end

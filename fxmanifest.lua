@@ -12,18 +12,17 @@ shared_scripts {
     "Config.lua",
     "tables/*.lua",
     "modules/**/shared/*.lua",
-    "framework/shared/*.lua",
+    "api/define.lua",
 }
 
 server_scripts {
     "modules/**/server/*.lua",
-    "framework/server/*.lua",
-    "framework/define.lua",
+    "api/server/*.lua",
 }
 
 client_scripts {
     "modules/**/client/*.lua",
-    "framework/client/*.lua",
+    "api/client/*.lua",
 
     "vendors/lib/RMenu.lua",
     "vendors/lib/menu/RageUI.lua",

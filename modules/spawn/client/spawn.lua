@@ -9,7 +9,7 @@ CreateThread(function()
     RequestModel(mod)
     while not HasModelLoaded(mod) do Citizen.Wait(10) end
     SetPlayerModel(PlayerId(), mod)
-    SetEntityCoords(PlayerPedId(), -77.53657, -2005.359, 18.01696, 78.521606445313)
+    SetEntityCoords(PlayerPedId(), Config.spawnPosition.x, Config.spawnPosition.y, Config.spawnPosition.z, Config.spawnPosition.heading)
     DoScreenFadeIn(3000)
     FreezeEntityPosition(PlayerPedId(), false)
     NetworkConcealPlayer(NetworkGetPlayerIndexFromPed(PlayerPedId()), false, 1)
