@@ -7,6 +7,7 @@ function MainMenu()
     local vehicle = RageUI.CreateSubMenu(main, "Véhicules", "Que voulez-vous faire ?")
     local weapons = RageUI.CreateSubMenu(main, "Armes", "Que voulez-vous faire ?")
     local meteo = RageUI.CreateSubMenu(main, "Météo", "Que voulez-vous faire ?")
+    --main.Closable = false
     RageUI.Visible(main, not RageUI.Visible(main))
     while main do
         Wait(0)
@@ -26,6 +27,10 @@ function MainMenu()
                 onSelected = function()
                     local car = nFramework.Input("Quel véhicule cherchez-vous ?", "", 30)
                     nFramework.SpawnCar(car, GetEntityCoords(PlayerPedId()).x, GetEntityCoords(PlayerPedId()).y, GetEntityCoords(PlayerPedId()).z)
+                    cooldown = false
+                    Wait(7000)
+                    cooldown = true
+                    RageUI.CloseAll()
                 end
             })
 
@@ -38,6 +43,7 @@ function MainMenu()
                         cooldown = false
                         Wait(7000)
                         cooldown = true
+                        RageUI.CloseAll()
                     end
                 })
             end
@@ -50,6 +56,7 @@ function MainMenu()
                 RageUI.Button(v.label, nil, {}, true, {
                     onSelected = function()
                         GiveWeaponToPed(PlayerPedId(), v.hash, 20, true, true)
+                        RageUI.CloseAll()
                     end
                 })
             end
@@ -57,6 +64,11 @@ function MainMenu()
         end)
 
         RageUI.IsVisible(meteo, function()
+
+            RageUI.Separator("Uniquement pour vous !")
+
+            RageUI.Line()
+
             RageUI.Separator("↓ Heures ↓")
 
             RageUI.List("Heures ",{"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23"}, time, nil, {}, true, {
@@ -191,8 +203,8 @@ function MainMenu()
     end
 end
 
-RegisterCommand("+Main-Menu", function()
-    MainMenu()
-end)
+-- RegisterCommand("+Main-Menu", function()
+--     MainMenu()
+-- end)
 
-RegisterKeyMapping("+Main-Menu", "Ouvrir le menu principale", "keyboard", "F5")
+-- RegisterKeyMapping("+Main-Menu", "Ouvrir le menu principale", "keyboard", "F5")

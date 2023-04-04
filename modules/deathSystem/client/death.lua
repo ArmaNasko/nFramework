@@ -9,7 +9,12 @@ Citizen.CreateThread(function()
                 respawnTimer = GetGameTimer() + respawnTime
             else
                 local remainingTime = math.ceil((respawnTimer - GetGameTimer()) / 1000)
-                nFramework.DrawText('Vous êtes mort, vous allez réapparaître dans ~b~' .. remainingTime .. '~s~ secondes', 0.5, 0.9)
+                if Config.respawnText == "DrawText" then
+                    nFramework.DrawText('Vous êtes mort, vous allez réapparaître dans ~b~' .. remainingTime .. '~s~ secondes', 0.5, 0.9)
+                elseif Config.respawnText == "ProgressBar" then
+                    nFramework.ProgressBar(300, "Réapparition en cours ..", "#FF0000")
+                    nFramework.StopProgressBar()
+                end
                 if remainingTime <= 0 then
                     nFramework.Revive()
                     respawnTimer = 0
