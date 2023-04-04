@@ -1,6 +1,7 @@
 # nFramework
  nFramework directed by Nasko
 
+À mettre dans le "server.cfg"
 
 ```cfg
 ensure nFramework
